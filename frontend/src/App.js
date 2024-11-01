@@ -37,8 +37,8 @@ function App() {
     );
   };
 
-  // If users is empty, display a loading message
-  if (loading) return <div>Loading...</div>;
+  // If users is empty, display nothing
+  if (loading) return <div></div>;
 
   return (
     <div className="flex h-screen w-full">
