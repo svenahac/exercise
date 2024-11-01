@@ -26,6 +26,17 @@ function App() {
     getUsers();
   }, []);
 
+  // Update the selected user with new data and remove the previous one from the sidebar
+  const handleUserUpdate = (updatedUser) => {
+    setSelectedUser(updatedUser);
+    setUsers(
+      (prevUsers) =>
+        prevUsers
+          .filter((user) => user.id !== updatedUser.id) // Remove previous user
+          .concat(updatedUser) // Add updated user back
+    );
+  };
+
   // If users is empty, display a loading message
   if (loading) return <div>Loading...</div>;
 
@@ -38,9 +49,10 @@ function App() {
           onUserClick={setSelectedUser}
         />
       </div>
-
       <div className="flex-grow flex justify-center items-center ml-64">
-        {selectedUser && <UserCard user={selectedUser} />}
+        {selectedUser && (
+          <UserCard user={selectedUser} onUserUpdate={handleUserUpdate} />
+        )}
       </div>
     </div>
   );

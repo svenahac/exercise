@@ -4,11 +4,11 @@ export default function SidebarItem({ user, isSelected, onUserClick }) {
       <a
         href="#"
         onClick={(e) => {
-          e.preventDefault(); 
-          onUserClick(user); 
+          e.preventDefault();
+          onUserClick(user);
         }}
-        className={`cursor-pointer hover:text-orange ${
-          isSelected ? "text-orange font-semibold" : "text-white"
+        className={`cursor-pointer hover:text-syyclopsOrange ${
+          isSelected ? "text-syyclopsOrange font-semibold" : "text-white"
         }`}
       >
         {user.firstName} {user.lastName}

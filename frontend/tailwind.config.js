@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        orange: "#DC5A27",
-        blue: "#090F2D",
+        syyclopsOrange: "#DC5A27",
+        syyclopsBlue: "#090F2D",
       },
     },
   },
