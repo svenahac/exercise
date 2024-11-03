@@ -47,7 +47,7 @@ export default function UserCard({ user, onUserUpdate }) {
         formData
       );
       onUserUpdate(response.data); // Update parent component with new user data
-      setIsEditing(false); // Exit edit mode
+      setIsEditing(false); 
     } catch (error) {
       console.error("Error updating user:", error);
     }
