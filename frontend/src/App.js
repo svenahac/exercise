@@ -8,10 +8,14 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [selectedUser, setSelectedUser] = useState(null);
 
+  // Set the base URL for the axios instance
+  //axios.defaults.baseURL = "https://dummyjson.com";
+  axios.defaults.baseURL = "http://127.0.0.1:8000/";
+
   async function getUsers() {
     try {
       const response = await axios.get(
-        "https://dummyjson.com/users?limit=20&select=id,firstName,lastName,age,gender,email,phone"
+        "/users?limit=5&select=id,firstName,lastName,age,gender,email,phone"
       );
       setUsers(response.data.users);
       setSelectedUser(response.data.users[0]);

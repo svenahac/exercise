@@ -1,22 +1,41 @@
 from typing import Union
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Query
 from users import get_users 
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# Add CORS middleware to allow cross-origin requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace with your allowed origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
 @app.get("/users")
-def return_users(skip: int = 0, limit: int = 5):
+def return_users(skip: int = 0, limit: int = 5, select: str = Query(None)):
     users = get_users() 
     total = len(users)
     processed = users[skip : skip + limit]
     
+    # Filter fields if select query parameter is provided
+    if select:
+        selected_fields = select.split(",")
+        filtered = [
+            {key: user[key] for key in selected_fields if key in user} for user in processed
+        ]
+    else:
+        filtered = processed  
+
+
     return {
-        "users": processed,
+        "users": filtered,
         "total": total,
         "skip": skip,
         "limit": limit

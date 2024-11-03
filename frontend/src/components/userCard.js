@@ -42,12 +42,9 @@ export default function UserCard({ user, onUserUpdate }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(
-        `https://dummyjson.com/users/${user.id}`,
-        formData
-      );
+      const response = await axios.put(`/users/${user.id}`, formData);
       onUserUpdate(response.data); // Update parent component with new user data
-      setIsEditing(false); 
+      setIsEditing(false);
     } catch (error) {
       console.error("Error updating user:", error);
     }

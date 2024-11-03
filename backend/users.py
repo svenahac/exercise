@@ -2,7 +2,7 @@ def get_users():
     return [
         {
             "id": 1,
-            "firstName": "John Doe",
+            "firstName": "John",
             "lastName": "Doe",
             "age": 30,
             "gender": "male",
@@ -11,7 +11,7 @@ def get_users():
         },
         {
             "id": 2,
-            "firstName": "Jane Doe",
+            "firstName": "Jane",
             "lastName": "Doe",
             "age": 30,
             "gender": "female",
